@@ -9,6 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const AppbarComponent = (props) => {
   const { showSideDrawer, toggleDrawer } = props;
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -33,9 +34,11 @@ const AppbarComponent = (props) => {
             {showSideDrawer ? <CloseIcon /> : <MenuIcon />}
           </IconButton>
         </Toolbar>
+
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           FriendsNet
         </Typography>
+
         <Navbar />
       </AppBar>
     </Box>

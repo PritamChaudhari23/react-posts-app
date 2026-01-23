@@ -1,7 +1,6 @@
-import { FC } from "react";
 import AppPage from "../../components/AppPage/AppPage";
 
-const UsersList: FC = () => {
+const UsersList= () => {
   return (
     <AppPage title={"Friends list"} description={"List of friends"}>
       <h4>USERS</h4>

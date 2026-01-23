@@ -1,15 +1,13 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AppPage from "../../components/AppPage/AppPage";
-import { fetchPostsAPI } from "../../../../network/api/postsapi";
-import { PostType } from "../../../../types/Post";
 import Post from "../Post/Post";
 import { useDispatch } from "react-redux";
 import { fetchCommentForPostAction } from "../../../../slices/commentsSlice";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useNavigate } from "react-router-dom";
 
-const PostsList: FC = () => {
-  const [posts, setPosts] = useState<PostType[]>([]);
+const PostsList = () => {
+  const [posts, setPosts] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -23,7 +21,7 @@ const PostsList: FC = () => {
 
   useEffect(() => {
     // getPosts();
-    let postId = 12;
+    const postId = 12;
     dispatch(fetchCommentForPostAction(postId));
   }, []);
 
@@ -36,6 +34,7 @@ const PostsList: FC = () => {
         {posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
+
         <RemoveRedEyeIcon
           onClick={() => {
             navigate(`/posts/${encodeURIComponent(18)}`);

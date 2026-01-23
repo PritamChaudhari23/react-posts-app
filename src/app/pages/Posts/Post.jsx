@@ -1,14 +1,9 @@
-import { FC, useEffect } from "react";
-import { PostType } from "../../../../types/Post";
+import { useEffect } from "react";
 import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { fetchPostsAction } from "../../../../slices/postsSlice";
 
-interface PostProps {
-  post: PostType;
-}
-
-const Post: FC<PostProps> = ({ post }) => {
+const Post = ({ post }) => {
   const dispatch = useDispatch();
 
   const fetchData = async () => {

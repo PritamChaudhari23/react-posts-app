@@ -1,12 +1,6 @@
-import { FC } from "react";
-import { CommentType } from "../../../../types/Comment";
 import Typography from "@mui/material/Typography";
 
-interface CommentProps {
-  comment: CommentType;
-}
-
-const Comment: FC<CommentProps> = ({ comment }) => {
+const Comment = ({ comment }) => {
   return (
     <div>
       <Typography variant="h6" gutterBottom>

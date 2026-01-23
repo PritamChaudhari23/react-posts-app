@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../components/Auth/AuthProvider";
 
-function Copyright(props: any) {
+function Copyright(props) {
   return (
     <Typography
       variant="body2"
@@ -35,7 +35,7 @@ function Copyright(props: any) {
 export default function SignInSide() {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({

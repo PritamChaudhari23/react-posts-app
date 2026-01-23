@@ -1,8 +1,7 @@
-import { FC } from "react";
 import AppPage from "../components/AppPage/AppPage";
 import Typography from "@mui/material/Typography";
 
-const NotFound: FC = () => {
+const NotFound = () => {
   return (
     <AppPage title={""} description={""}>
       <div>

@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import "./SideDrawer.css";
 
-const SideDrawer: FC = () => {
+const SideDrawer = () => {
   return (
     <aside id="app-sidebar" className="app-sidebar">
       <Link to="/">Posts</Link>

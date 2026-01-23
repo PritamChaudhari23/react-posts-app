@@ -1,8 +1,7 @@
-import { FC } from "react";
 import AppPage from "../components/AppPage/AppPage";
 import Typography from "@mui/material/Typography";
 
-export const Friends: FC = () => {
+export const Friends = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -14,7 +13,7 @@ export const Friends: FC = () => {
   );
 };
 
-export const Memories: FC = () => {
+export const Memories = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -26,7 +25,7 @@ export const Memories: FC = () => {
   );
 };
 
-export const Interests: FC = () => {
+export const Interests = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -38,7 +37,7 @@ export const Interests: FC = () => {
   );
 };
 
-export const Places: FC = () => {
+export const Places = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -50,7 +49,7 @@ export const Places: FC = () => {
   );
 };
 
-export const Events: FC = () => {
+export const Events = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -62,7 +61,7 @@ export const Events: FC = () => {
   );
 };
 
-export const Profile: FC = () => {
+export const Profile = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -74,7 +73,7 @@ export const Profile: FC = () => {
   );
 };
 
-export const Settings: FC = () => {
+export const Settings = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -86,7 +85,7 @@ export const Settings: FC = () => {
   );
 };
 
-export const Help: FC = () => {
+export const Help = () => {
   return (
     <AppPage title={""} description={""}>
       <div>
@@ -98,7 +97,7 @@ export const Help: FC = () => {
   );
 };
 
-export const Logout: FC = () => {
+export const Logout = () => {
   return (
     <AppPage title={""} description={""}>
       <div>

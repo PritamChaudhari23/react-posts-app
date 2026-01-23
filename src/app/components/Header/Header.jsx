@@ -1,8 +1,7 @@
-import { FC } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Header.css";
 
-const Header: FC = () => {
+const Header = () => {
   return (
     <header id="app-header" className="app-header">
       <h1>Header</h1>
