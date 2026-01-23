@@ -1,0 +1,13 @@
+.app-body {
+  padding: 16px;
+  text-align: center;
+  grid-area: main;
+}
+
+.page-header {
+}
+
+.page-body {
+  display: flex;
+  flex-grow: 1;
+}

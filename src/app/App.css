@@ -1,0 +1,12 @@
+.app {
+  background: white;
+  font-family: sans-serif;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 15% auto;
+  grid-template-rows: 10% auto 10%;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "sidebar footer";
+}
