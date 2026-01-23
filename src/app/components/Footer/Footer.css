@@ -1,5 +1,5 @@
 .app-footer {
-  padding: 16px;
+  padding: 8px 16px;
   text-align: center;
   background: black;
   grid-area: footer;
@@ -7,4 +7,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: auto;
 }

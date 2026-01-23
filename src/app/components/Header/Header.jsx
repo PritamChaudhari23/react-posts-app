@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <header id="app-header" className="app-header">
-      <h1>Header</h1>
+      <h3 style={{ margin: 0, fontSize: '18px' }}>Header</h3>
       <Navbar />
     </header>
   );

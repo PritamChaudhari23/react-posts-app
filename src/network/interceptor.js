@@ -14,7 +14,8 @@ export const errorHandler = (error) => {
 };
 
 export const axiosInstance = axios.create({
-  baseURL: "https://dummyjson.com", // or env-based URL
+  baseURL: "https://jsonplaceholder.typicode.com",
+  // baseURL: "https://dummyjson.com", // or env-based URL
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",

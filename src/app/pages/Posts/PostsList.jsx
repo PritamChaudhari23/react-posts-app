@@ -1,29 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AppPage from "../../components/AppPage/AppPage";
 import Post from "./Post";
-import { useDispatch } from "react-redux";
-import { fetchCommentForPostAction } from "../../../slices/commentsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostsAction } from "../../../slices/postsSlice";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useNavigate } from "react-router-dom";
 
 const PostsList = () => {
-  const [posts, setPosts] = useState([]);
+  const posts = useSelector((state) => {console.log(state); return state.posts.data});
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const getPosts = async () => {
-  //   const response = await fetchPostsAPI();
-  //   if (response && response.data) {
-  //     setPosts([...posts, response.data.posts[0]]);
-  //   }
-  //   console.log(response);
-  // };
-
   useEffect(() => {
-    // getPosts();
-    const postId = 12;
-    dispatch(fetchCommentForPostAction(postId));
-  }, []);
+    dispatch(fetchPostsAction());
+  }, [dispatch]);
 
   return (
     <AppPage
@@ -31,7 +21,7 @@ const PostsList = () => {
       description={"List of posts made by your friends"}
     >
       <div>
-        {posts.map((post) => (
+        {posts && posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
 
