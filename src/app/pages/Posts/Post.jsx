@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { fetchPostsAction } from "../../../../slices/postsSlice";
+import { fetchPostsAction } from "../../../slices/postsSlice";
 
 const Post = ({ post }) => {
   const dispatch = useDispatch();

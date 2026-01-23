@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 const CommentsList = () => {
   return (
     <div>

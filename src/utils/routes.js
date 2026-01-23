@@ -23,7 +23,7 @@ const CommentsList = Loadable(
 );
 
 const NotFound = Loadable(lazy(() => import("../app/pages/NotFound")));
-const SignIn = Loadable(lazy(() => import("../app/pages/User/SignIn/SignIn")));
+const SignIn = Loadable(lazy(() => import("../app/pages/User/SignIn")));
 
 const Friends = Loadable(
   lazy(() =>

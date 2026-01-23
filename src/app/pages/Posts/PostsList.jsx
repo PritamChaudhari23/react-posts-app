@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import AppPage from "../../components/AppPage/AppPage";
-import Post from "../Post/Post";
+import Post from "./Post";
 import { useDispatch } from "react-redux";
-import { fetchCommentForPostAction } from "../../../../slices/commentsSlice";
+import { fetchCommentForPostAction } from "../../../slices/commentsSlice";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useNavigate } from "react-router-dom";
 
