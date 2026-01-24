@@ -18,20 +18,16 @@ const PostsList = Loadable(
   lazy(() => import("../app/pages/Posts/PostsList"))
 );
 
+const UserPostsList = Loadable(
+  lazy(() => import("../app/pages/Posts/UserPostsList"))
+);
+
 const CommentsList = Loadable(
   lazy(() => import("../app/pages/Comments/CommentsList"))
 );
 
 const NotFound = Loadable(lazy(() => import("../app/pages/NotFound")));
 const SignIn = Loadable(lazy(() => import("../app/pages/User/SignIn")));
-
-const Friends = Loadable(
-  lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
-      default: module.Friends,
-    }))
-  )
-);
 
 const Memories = Loadable(
   lazy(() =>
@@ -101,13 +97,14 @@ const routes = [
   { path: "/", element: <PostsList /> },
   { path: "/posts/:id", element: <PostDetails /> },
   { path: "/users", element: <UsersList /> },
+  { path: "/users/:userId/posts", element: <UserPostsList /> },
+  { path: "/friends", element: <UsersList /> },
   {
     path: "/comments",
     element: <ProtectedRoute element={<CommentsList />} />,
   },
   { path: "*", element: <NotFound /> },
   { path: "/signin", element: <SignIn /> },
-  { path: "/friends", element: <Friends /> },
   { path: "/memories", element: <Memories /> },
   { path: "/interests", element: <Interests /> },
   { path: "/places", element: <Places /> },
