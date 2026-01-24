@@ -78,8 +78,6 @@ const PostDetails = () => {
                 fontWeight: 600,
                 color: "#1976d2",
                 marginBottom: 2,
-                borderLeft: "4px solid #1976d2",
-                paddingLeft: 2,
               }}
             >
               Comments

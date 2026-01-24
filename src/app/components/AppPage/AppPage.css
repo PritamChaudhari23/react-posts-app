@@ -2,6 +2,8 @@
   padding: 16px;
   text-align: center;
   grid-area: main;
+  overflow-y: auto;
+  min-height: 0; 
 }
 
 .page-header {

@@ -24,12 +24,6 @@ const PostsList = () => {
         {posts && posts.map((post) => (
           <Post key={post.id} post={post} />
         ))}
-
-        <RemoveRedEyeIcon
-          onClick={() => {
-            navigate(`/posts/${encodeURIComponent(18)}`);
-          }}
-        />
       </div>
     </AppPage>
   );
