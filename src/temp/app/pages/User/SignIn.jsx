@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../components/Auth/AuthProvider";
+import { useAuth } from "../../../../components/auth/AuthProvider";
 
 function Copyright(props) {
   return (

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
-import ProtectedRoute from "../app/components/Auth/ProtectedRoute";
-import PostDetails from "../app/pages/Posts/PostDetails";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import PostDetails from "./temp/app/pages/Posts/PostDetails";
 
 const Loadable = (Component) => {
   return (props) => (
@@ -11,86 +11,86 @@ const Loadable = (Component) => {
 };
 
 const UsersList = Loadable(
-  lazy(() => import("../app/pages/User/UsersList"))
+  lazy(() => import("./temp/app/pages/User/UsersList")),
 );
 
 const PostsList = Loadable(
-  lazy(() => import("../app/pages/Posts/PostsList"))
+  lazy(() => import("./temp/app/pages/Posts/PostsList")),
 );
 
 const UserPostsList = Loadable(
-  lazy(() => import("../app/pages/Posts/UserPostsList"))
+  lazy(() => import("./temp/app/pages/Posts/UserPostsList")),
 );
 
 const CommentsList = Loadable(
-  lazy(() => import("../app/pages/Comments/CommentsList"))
+  lazy(() => import("./temp/app/pages/Comments/CommentsList")),
 );
 
-const NotFound = Loadable(lazy(() => import("../app/pages/NotFound")));
-const SignIn = Loadable(lazy(() => import("../app/pages/User/SignIn")));
+const NotFound = Loadable(lazy(() => import("./temp/app/pages/NotFound")));
+const SignIn = Loadable(lazy(() => import("./temp/app/pages/User/SignIn")));
 
 const Memories = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Memories,
-    }))
-  )
+    })),
+  ),
 );
 
 const Interests = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Interests,
-    }))
-  )
+    })),
+  ),
 );
 
 const Places = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Places,
-    }))
-  )
+    })),
+  ),
 );
 
 const Events = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Events,
-    }))
-  )
+    })),
+  ),
 );
 
 const Profile = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Profile,
-    }))
-  )
+    })),
+  ),
 );
 
 const Help = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Help,
-    }))
-  )
+    })),
+  ),
 );
 
 const Settings = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Settings,
-    }))
-  )
+    })),
+  ),
 );
 
 const Logout = Loadable(
   lazy(() =>
-    import("../app/pages/DummyPages").then((module) => ({
+    import("./temp/app/pages/DummyPages").then((module) => ({
       default: module.Logout,
-    }))
-  )
+    })),
+  ),
 );
 
 const routes = [
