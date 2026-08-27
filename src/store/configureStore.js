@@ -1,25 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
-import createReducer from "./reducers";
-import rootSaga from "../temp/sagas/index";
+import rootSaga from "./appSaga";
+import { postsSlice, commentsSlice, usersSlice, appSlice } from "./appSlice";
 
-export default function configureAppStore() {
-  const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
-  const middlewares = [sagaMiddleware];
+export const store = configureStore({
+  reducer: {
+    posts: postsSlice.reducer,
+    comments: commentsSlice.reducer,
+    users: usersSlice.reducer,
+    app: appSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+});
 
-  const store = configureStore({
-    reducer: createReducer(),
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        thunk: false,
-        serializableCheck: false,
-      }).concat(middlewares),
-    preloadedState: {},
-    devTools: process.env.NODE_ENV !== "production",
-  });
-
-  sagaMiddleware.run(rootSaga);
-  return store;
-}
+sagaMiddleware.run(rootSaga);
