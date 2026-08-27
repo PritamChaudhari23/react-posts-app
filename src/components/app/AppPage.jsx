@@ -1,6 +1,6 @@
 import React from "react";
 import PageBody from "./PageBody";
-import PageHeader from "./PageHeader";
+import PageHeader from "../../temp/app/components/AppPage/PageHeader";
 import "./AppPage.css";
 
 const AppPage = ({ title, description, children }) => {

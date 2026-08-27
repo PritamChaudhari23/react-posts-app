@@ -29,70 +29,6 @@ const CommentsList = Loadable(
 const NotFound = Loadable(lazy(() => import("./temp/app/pages/NotFound")));
 const SignIn = Loadable(lazy(() => import("./temp/app/pages/User/SignIn")));
 
-const Memories = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Memories,
-    })),
-  ),
-);
-
-const Interests = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Interests,
-    })),
-  ),
-);
-
-const Places = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Places,
-    })),
-  ),
-);
-
-const Events = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Events,
-    })),
-  ),
-);
-
-const Profile = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Profile,
-    })),
-  ),
-);
-
-const Help = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Help,
-    })),
-  ),
-);
-
-const Settings = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Settings,
-    })),
-  ),
-);
-
-const Logout = Loadable(
-  lazy(() =>
-    import("./temp/app/pages/DummyPages").then((module) => ({
-      default: module.Logout,
-    })),
-  ),
-);
-
 const routes = [
   { path: "/", element: <PostsList /> },
   { path: "/posts/:id", element: <PostDetails /> },
@@ -105,14 +41,6 @@ const routes = [
   },
   { path: "*", element: <NotFound /> },
   { path: "/signin", element: <SignIn /> },
-  { path: "/memories", element: <Memories /> },
-  { path: "/interests", element: <Interests /> },
-  { path: "/places", element: <Places /> },
-  { path: "/events", element: <Events /> },
-  { path: "/profile", element: <Profile /> },
-  { path: "/settings", element: <Settings /> },
-  { path: "/help", element: <Help /> },
-  { path: "/logout", element: <Logout /> },
 ];
 
 export default routes;
