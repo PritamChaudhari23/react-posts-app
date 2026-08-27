@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/configureStore";
+import { store } from "./store/configureStore";
 import "./App.css";
-import Footer from "./temp/app/components/Footer/Footer";
-import Header from "./temp/app/components/Header/Header";
-import routes from "../utils/routes";
+import Footer from "./components/app/shell/Footer";
+import Header from "./components/app/shell/Header";
+import routes from "./routes";
 import { AuthProvider } from "./components/auth/AuthProvider";
-import SideDrawer from "./temp/app/components/SideDrawer/SideDrawer";
+import SideDrawer from "./components/app/shell/SideDrawer";
 
 function App() {
   return (

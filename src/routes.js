@@ -1,43 +1,19 @@
-import { lazy, Suspense } from "react";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import PostDetails from "./temp/app/pages/Posts/PostDetails";
-
-const Loadable = (Component) => {
-  return (props) => (
-    <Suspense fallback={<div>Loading.....</div>}>
-      <Component {...props} />
-    </Suspense>
-  );
-};
-
-const UsersList = Loadable(
-  lazy(() => import("./temp/app/pages/User/UsersList")),
-);
-
-const PostsList = Loadable(
-  lazy(() => import("./temp/app/pages/Posts/PostsList")),
-);
-
-const UserPostsList = Loadable(
-  lazy(() => import("./temp/app/pages/Posts/UserPostsList")),
-);
-
-const CommentsList = Loadable(
-  lazy(() => import("./temp/app/pages/Comments/CommentsList")),
-);
-
-const NotFound = Loadable(lazy(() => import("./temp/app/pages/NotFound")));
-const SignIn = Loadable(lazy(() => import("./temp/app/pages/User/SignIn")));
+import NotFound from "./components/app/NotFound";
+import Post from "./components/posts/Post";
+import Comment from "./components/comments/Comment";
+import UsersList from "./components/users/UsersList";
+import SignIn from "./components/users/SignIn";
 
 const routes = [
-  { path: "/", element: <PostsList /> },
-  { path: "/posts/:id", element: <PostDetails /> },
+  { path: "/", element: <Post /> },
+  { path: "/posts/:id", element: <Post /> },
   { path: "/users", element: <UsersList /> },
-  { path: "/users/:userId/posts", element: <UserPostsList /> },
+  { path: "/users/:userId/posts", element: <Post /> },
   { path: "/friends", element: <UsersList /> },
   {
     path: "/comments",
-    element: <ProtectedRoute element={<CommentsList />} />,
+    element: <ProtectedRoute element={<Comment />} />,
   },
   { path: "*", element: <NotFound /> },
   { path: "/signin", element: <SignIn /> },

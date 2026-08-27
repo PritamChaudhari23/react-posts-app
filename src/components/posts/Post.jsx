@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/page.scss";
+import "../app/appPage.scss";
 
 const Post = () => {
   const [post, setPost] = useState({

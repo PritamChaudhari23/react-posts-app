@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles";
+import "../app/appPage.scss";
 
 const Comment = () => {
   const [comment, setComment] = useState({

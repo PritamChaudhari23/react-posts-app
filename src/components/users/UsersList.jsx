@@ -1,33 +1,37 @@
 import { useEffect } from "react";
-import AppPage from "../../components/AppPage/AppPage";
+import Page from "../app/page/Page";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUsersAction } from "../../../slices/usersSlice";
+import { usersSlice } from "../../store/appSlice";
 import UserCard from "./UserCard";
 import { Box, CircularProgress } from "@mui/material";
 
 const UsersList = () => {
-  const users = useSelector((state) => state.users.data);
-  const loading = useSelector((state) => state.users.loading);
+  const users = useSelector((state) => Object.values(state.users.users.byId));
+  const loading = useSelector((state) => state.users.users.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUsersAction());
+    dispatch(usersSlice.actions.fetchUsers());
   }, [dispatch]);
 
   return (
-    <AppPage title={"Friends list"} description={"List of friends"}>
+    <Page>
       {loading ? (
         <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
           <CircularProgress />
         </Box>
       ) : (
-        <Box sx={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 2 }}>
-          {users && users.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: 2,
+          }}
+        >
+          {users && users.map((user) => <UserCard key={user.id} user={user} />)}
         </Box>
       )}
-    </AppPage>
+    </Page>
   );
 };
 
