@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./SideDrawer.css";
+import "../appPage.scss";
 
 const SideDrawer = () => {
   return (

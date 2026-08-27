@@ -1,9 +1,9 @@
-import "./Footer.css";
+import "../appPage.scss";
 
 const Footer = () => {
   return (
     <footer id="app-footer" className="app-footer">
-      <h3 style={{ margin: 0, fontSize: '14px' }}>footer</h3>
+      <h3 style={{ margin: 0, fontSize: "14px" }}>footer</h3>
     </footer>
   );
 };
