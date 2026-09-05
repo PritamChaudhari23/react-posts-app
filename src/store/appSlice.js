@@ -16,6 +16,8 @@ const initialPostsState = {
   search: {
     query: "",
     loading: false,
+    error: null,
+    isActive: false,
   },
 
   likedPostIds: [],
@@ -71,9 +73,27 @@ const postsSlice = createSlice({
     setCurrentPostId: (state, action) => {
       state.currentPostId = action.payload;
     },
-    setSearchQuery: (state, action) => {
+
+    searchPosts: (state, action) => {
       state.search.query = action.payload;
+      state.search.loading = true;
+      state.search.error = null;
+      state.search.isActive = true;
     },
+    searchPostsSuccess: (state, action) => {
+      state.search.loading = false;
+      state.posts.list = action.payload;
+    },
+    searchPostsFailure: (state, action) => {
+      state.search.loading = false;
+      state.search.error = action.payload;
+    },
+    clearSearch: (state) => {
+      state.search.query = "";
+      state.search.isActive = false;
+      state.search.error = null;
+    },
+
     likePostOptimistic: (state, action) => {
       if (!state.likedPostIds.includes(action.payload)) {
         state.likedPostIds.push(action.payload);
@@ -149,7 +169,10 @@ export const {
   fetchPostsFailure,
   setPage,
   setCurrentPostId,
-  setSearchQuery,
+  searchPosts,
+  searchPostsSuccess,
+  searchPostsFailure,
+  clearSearch,
   likePostOptimistic,
   likePostRollback,
 } = postsSlice.actions;
