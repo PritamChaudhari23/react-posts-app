@@ -71,6 +71,7 @@ const postsSlice = createSlice({
     setCurrentPostId: (state, action) => {
       state.currentPostId = action.payload.postId;
     },
+    likePost: () => {}, // no state change here — this just exists so the saga has an action type to watch for
     likePostOptimistic: (state, action) => {
       if (!state.likedPostIds.includes(action.payload)) {
         state.likedPostIds.push(action.payload);
@@ -94,6 +95,7 @@ export const {
   searchPostsSuccess,
   searchPostsFailure,
   clearSearch,
+  likePost,
   likePostOptimistic,
   likePostRollback,
 } = postsSlice.actions;
