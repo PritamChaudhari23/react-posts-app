@@ -68,7 +68,9 @@ const postsSlice = createSlice({
       state.search.isActive = false;
       state.search.error = null;
     },
-
+    setCurrentPostId: (state, action) => {
+      state.currentPostId = action.payload.postId;
+    },
     likePostOptimistic: (state, action) => {
       if (!state.likedPostIds.includes(action.payload)) {
         state.likedPostIds.push(action.payload);
