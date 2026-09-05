@@ -130,4 +130,20 @@ const appSlice = createSlice({
   },
 });
 
-export { postsSlice, commentsSlice, usersSlice, appSlice };
+export const {
+  fetchPosts,
+  fetchPostsSuccess,
+  fetchPostsFailure,
+  setCurrentPostId,
+  setSearchQuery,
+  likePostOptimistic,
+  likePostRollback,
+} = postsSlice.actions;
+
+export const { fetchComments, fetchCommentsSuccess, fetchCommentsFailure } =
+  commentsSlice.actions;
+
+export const { fetchUser, fetchUserSuccess, fetchUserFailure, setCurrentUser } =
+  usersSlice.actions;
+
+export const { setGlobalError, clearGlobalError } = appSlice.actions;

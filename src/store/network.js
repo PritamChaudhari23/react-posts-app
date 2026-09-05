@@ -27,16 +27,24 @@ axiosInstance.interceptors.response.use(
   errorHandler,
 );
 
-const getPosts = (limit = 0, skip = 0) =>
-  axiosInstance.get("/posts", { params: { limit, skip } });
+const getPosts = async (limit = 0, skip = 0) => {
+  const data = await axiosInstance.get("/posts", { params: { limit, skip } });
+  return data.posts;
+};
 
-const searchPosts = (query) =>
-  axiosInstance.get("/posts/search", { params: { q: query } });
+const searchPosts = async (query) => {
+  const data = await axiosInstance.get("/posts/search", {
+    params: { q: query },
+  });
+  return data.posts;
+};
 
 const getPostById = (id) => axiosInstance.get(`/posts/${id}`);
 
-const getPostComments = (postId) =>
-  axiosInstance.get(`/posts/${postId}/comments`);
+const getPostComments = async (postId) => {
+  const data = await axiosInstance.get(`/posts/${postId}/comments`);
+  return data.comments;
+};
 
 const createPost = (post) => axiosInstance.post("/posts/add", post);
 
@@ -45,9 +53,15 @@ const updatePost = (postId, updatedData) =>
 
 const deletePost = (postId) => axiosInstance.delete(`/posts/${postId}`);
 
-const getUsers = () => axiosInstance.get("/users");
+const getUsers = async () => {
+  const data = await axiosInstance.get("/users");
+  return data.users;
+};
 
-const getUserPosts = (userId) => axiosInstance.get(`/users/${userId}/posts`);
+const getUserPosts = async (userId) => {
+  const data = await axiosInstance.get(`/users/${userId}/posts`);
+  return data.posts;
+};
 
 const getUserById = (userId) => axiosInstance.get(`/users/${userId}`);
 
