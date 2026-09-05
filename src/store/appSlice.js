@@ -5,6 +5,10 @@ const initialPostsState = {
     list: [],
     loading: false,
     error: null,
+    page: 1,
+    limit: 10,
+    total: 0,
+    hasMore: true,
   },
 
   currentPostId: null,
@@ -51,12 +55,18 @@ const postsSlice = createSlice({
       state.posts.error = null;
     },
     fetchPostsSuccess: (state, action) => {
+      const { posts, total } = action.payload;
       state.posts.loading = false;
-      state.posts.list = action.payload;
+      state.posts.list = posts;
+      state.posts.total = total;
+      state.posts.hasMore = state.posts.page * state.posts.limit < total;
     },
     fetchPostsFailure: (state, action) => {
       state.posts.loading = false;
       state.posts.error = action.payload;
+    },
+    setPage: (state, action) => {
+      state.posts.page = action.payload;
     },
     setCurrentPostId: (state, action) => {
       state.currentPostId = action.payload;
@@ -127,6 +137,9 @@ const appSlice = createSlice({
     setGlobalError: (state, action) => {
       state.ui.globalError = action.payload;
     },
+    clearGlobalError: (state) => {
+      state.ui.globalError = null;
+    },
   },
 });
 
@@ -134,6 +147,7 @@ export const {
   fetchPosts,
   fetchPostsSuccess,
   fetchPostsFailure,
+  setPage,
   setCurrentPostId,
   setSearchQuery,
   likePostOptimistic,
@@ -143,7 +157,13 @@ export const {
 export const { fetchComments, fetchCommentsSuccess, fetchCommentsFailure } =
   commentsSlice.actions;
 
-export const { fetchUser, fetchUserSuccess, fetchUserFailure, setCurrentUser } =
-  usersSlice.actions;
+export const {
+  fetchUsers,
+  fetchUsersSuccess,
+  fetchUsersFailure,
+  setCurrentUser,
+} = usersSlice.actions;
 
 export const { setGlobalError, clearGlobalError } = appSlice.actions;
+
+export { postsSlice, commentsSlice, usersSlice, appSlice };

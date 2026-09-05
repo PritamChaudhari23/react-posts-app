@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
 
 const getPosts = async (limit = 0, skip = 0) => {
   const data = await axiosInstance.get("/posts", { params: { limit, skip } });
-  return data.posts;
+  return { posts: data.posts, total: data.total };
 };
 
 const searchPosts = async (query) => {

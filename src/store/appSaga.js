@@ -1,11 +1,15 @@
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, select, takeLatest } from "redux-saga/effects";
 import { fetchPosts, fetchPostsSuccess, fetchPostsFailure } from "./appSlice";
 import { getPosts } from "./network";
 
+const selectPagination = (state) => state.posts.posts;
+
 function* fetchPostsWorker() {
   try {
-    const posts = yield call(getPosts);
-    yield put(fetchPostsSuccess(posts));
+    const { page, limit } = yield select(selectPagination);
+    const skip = (page - 1) * limit;
+    const { posts, total } = yield call(getPosts, limit, skip);
+    yield put(fetchPostsSuccess({ posts, total }));
   } catch (error) {
     yield put(fetchPostsFailure(error.message));
   }
