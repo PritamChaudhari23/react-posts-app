@@ -23,31 +23,6 @@ const initialPostsState = {
   likedPostIds: [],
 };
 
-const initialCommentsState = {
-  comments: {
-    list: [],
-    loading: false,
-    error: null,
-  },
-};
-
-const initialUsersState = {
-  users: {
-    byId: {},
-    loading: false,
-    error: null,
-  },
-  currentUser: {
-    id: null,
-  },
-};
-
-const initialAppState = {
-  ui: {
-    globalError: null,
-  },
-};
-
 const postsSlice = createSlice({
   name: "posts",
   initialState: initialPostsState,
@@ -107,62 +82,6 @@ const postsSlice = createSlice({
   },
 });
 
-const commentsSlice = createSlice({
-  name: "comments",
-  initialState: initialCommentsState,
-  reducers: {
-    fetchComments: (state) => {
-      state.comments.loading = true;
-      state.comments.error = null;
-    },
-    fetchCommentsSuccess: (state, action) => {
-      state.comments.loading = false;
-      state.comments.list = action.payload;
-    },
-    fetchCommentsFailure: (state, action) => {
-      state.comments.loading = false;
-      state.comments.error = action.payload;
-    },
-  },
-});
-
-const usersSlice = createSlice({
-  name: "users",
-  initialState: initialUsersState,
-  reducers: {
-    fetchUsers: (state) => {
-      state.users.loading = true;
-      state.users.error = null;
-    },
-    fetchUsersSuccess: (state, action) => {
-      state.users.loading = false;
-      state.users.byId = Object.fromEntries(
-        action.payload.map((user) => [user.id, user]),
-      );
-    },
-    fetchUsersFailure: (state, action) => {
-      state.users.loading = false;
-      state.users.error = action.payload;
-    },
-    setCurrentUser: (state, action) => {
-      state.currentUser.id = action.payload;
-    },
-  },
-});
-
-const appSlice = createSlice({
-  name: "app",
-  initialState: initialAppState,
-  reducers: {
-    setGlobalError: (state, action) => {
-      state.ui.globalError = action.payload;
-    },
-    clearGlobalError: (state) => {
-      state.ui.globalError = null;
-    },
-  },
-});
-
 export const {
   fetchPosts,
   fetchPostsSuccess,
@@ -177,16 +96,4 @@ export const {
   likePostRollback,
 } = postsSlice.actions;
 
-export const { fetchComments, fetchCommentsSuccess, fetchCommentsFailure } =
-  commentsSlice.actions;
-
-export const {
-  fetchUsers,
-  fetchUsersSuccess,
-  fetchUsersFailure,
-  setCurrentUser,
-} = usersSlice.actions;
-
-export const { setGlobalError, clearGlobalError } = appSlice.actions;
-
-export { postsSlice, commentsSlice, usersSlice, appSlice };
+export { postsSlice };
