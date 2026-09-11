@@ -3,11 +3,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import axe from "@axe-core/react";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n.js"; // Ensure i18n is initialized
+
+if (process.env.NODE_ENV === "development") {
+  axe(React, ReactDOM, 1000);
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <I18nextProvider i18n={i18n}>
+      <App />
+    </I18nextProvider>
   </React.StrictMode>,
 );
 
