@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Page from "../app/page/Page";
 import { useDispatch, useSelector } from "react-redux";
-import { usersSlice } from "../../store/appSlice";
+import { usersSlice } from "../../store/slices/usersSlice";
 import UserCard from "./UserCard";
 import { Box, CircularProgress } from "@mui/material";
 
