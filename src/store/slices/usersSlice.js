@@ -52,6 +52,9 @@ export const {
   fetchUsersSuccess,
   fetchUsersFailure,
   setCurrentUser,
+  fetchUserById,
+  fetchUserByIdSuccess,
+  fetchUserByIdFailure,
 } = usersSlice.actions;
 
 export { usersSlice };
