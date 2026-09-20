@@ -7,6 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Comment from "../comments/Comment";
 import Page from "../app/page/Page";
 import Post from "./Post";
 import { setCurrentPostId } from "../../store/slices/postsSlice";
@@ -56,20 +57,15 @@ const PostDetail = () => {
       )}
 
       <Box sx={{ maxWidth: 800, margin: "auto", mt: 3 }}>
-        <Typography variant="h6">Comments</Typography>
+        <Typography variant="h6" sx={{ mb: 1 }}>
+          Comments
+        </Typography>
         {commentsLoading ? (
           <CircularProgress size={24} />
         ) : (
-          <List>
-            {comments.map((comment) => (
-              <ListItem key={comment.id} alignItems="flex-start">
-                <ListItemText
-                  primary={comment.body}
-                  secondary={comment.user?.fullName}
-                />
-              </ListItem>
-            ))}
-          </List>
+          comments.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))
         )}
       </Box>
     </Page>
