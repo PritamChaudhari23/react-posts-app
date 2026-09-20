@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// TO-DO: token is set to true to bypass auth and work on features. Once completed, set token to null.
+
 const initialAuthState = {
   user: null,
-  token: null,
+  token: true,
   loading: false,
   error: null,
 };
