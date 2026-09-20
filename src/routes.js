@@ -1,22 +1,27 @@
+import { useAuth } from "./components/auth/AuthProvider";
+import { Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/app/NotFound";
 import Post from "./components/posts/Post";
 import Comment from "./components/comments/Comment";
 import UsersList from "./components/users/UsersList";
 import SignIn from "./components/users/SignIn";
+import SignUp from "./components/users/SignUp";
+
+const HomeRedirect = () => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navigate to="/posts" /> : <Navigate to="/signin" />;
+};
 
 const routes = [
-  { path: "/", element: <Post /> },
-  { path: "/posts/:id", element: <Post /> },
-  { path: "/users", element: <UsersList /> },
-  { path: "/users/:userId/posts", element: <Post /> },
-  { path: "/friends", element: <UsersList /> },
-  {
-    path: "/comments",
-    element: <ProtectedRoute element={<Comment />} />,
-  },
-  { path: "*", element: <NotFound /> },
+  { path: "/", element: <HomeRedirect /> },
+  { path: "/posts", element: <ProtectedRoute element={<Post />} /> },
+  { path: "/posts/:id", element: <ProtectedRoute element={<Post />} /> },
+  { path: "/users", element: <ProtectedRoute element={<UsersList />} /> },
+  { path: "/comments", element: <ProtectedRoute element={<Comment />} /> },
   { path: "/signin", element: <SignIn /> },
+  { path: "/signup", element: <SignUp /> },
+  { path: "*", element: <NotFound /> },
 ];
 
 export default routes;

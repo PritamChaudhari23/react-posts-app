@@ -1,15 +1,24 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  login as loginAction,
+  logout as logoutAction,
+} from "../../store/slices/authSlice";
 
 const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
 
-  const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+  const isAuthenticated = !!token;
+
+  const login = (credentials) => dispatch(loginAction(credentials));
+  const logout = () => dispatch(logoutAction());
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
