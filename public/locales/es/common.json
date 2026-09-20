@@ -1,4 +1,41 @@
 {
-  "header": "",
-  "footer": ""
+  "app": {
+    "title": "Aplicación de Publicaciones"
+  },
+  "nav": {
+    "posts": "Publicaciones",
+    "users": "Amigos",
+    "addPost": "Añadir Publicación",
+    "myPosts": "Mis Publicaciones"
+  },
+  "posts": {
+    "searchPlaceholder": "Buscar publicaciones",
+    "loading": "Cargando publicaciones...",
+    "noResults": "No se encontraron publicaciones",
+    "views": "Vistas: {{count}}",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "page": "Página {{page}}"
+  },
+  "postDetail": {
+    "commentsTitle": "Comentarios",
+    "notFound": "Publicación no encontrada — vuelve a la lista.",
+    "byAuthor": "Por {{name}}"
+  },
+  "auth": {
+    "signInTitle": "Iniciar sesión",
+    "signUpTitle": "Registrarse",
+    "usernameLabel": "Usuario",
+    "passwordLabel": "Contraseña",
+    "firstNameLabel": "Nombre",
+    "lastNameLabel": "Apellido",
+    "emailLabel": "Correo Electrónico",
+    "signInButton": "Iniciar Sesión",
+    "signUpButton": "Registrarse",
+    "noAccount": "¿No tienes una cuenta? Regístrate",
+    "haveAccount": "¿Ya tienes una cuenta? Inicia sesión"
+  },
+  "users": {
+    "viewPosts": "Ver Publicaciones"
+  }
 }

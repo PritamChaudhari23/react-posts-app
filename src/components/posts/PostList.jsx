@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -16,6 +17,7 @@ import {
 
 const PostsList = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { list, loading, error, page, hasMore } = useSelector(
     (state) => state.posts.posts,
   );
@@ -50,11 +52,11 @@ const PostsList = () => {
   };
 
   return (
-    <Page title="Posts">
+    <Page>
       <Box sx={{ maxWidth: 800, margin: "auto", mb: 2 }}>
         <TextField
           fullWidth
-          label="Search posts"
+          label={t("posts.searchPlaceholder")}
           value={query}
           onChange={handleSearchChange}
         />
@@ -72,18 +74,32 @@ const PostsList = () => {
         </Typography>
       )}
 
+      {!loading && !searchLoading && list.length === 0 && (
+        <Typography align="center" color="text.secondary">
+          {t("posts.noResults")}
+        </Typography>
+      )}
+
       {!loading &&
         !searchLoading &&
         list.map((post) => <Post key={post.id} post={post} />)}
 
       {!isActive && (
-        <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 2,
+            mt: 2,
+            alignItems: "center",
+          }}
+        >
           <Button disabled={page === 1} onClick={handlePrevPage}>
-            Previous
+            {t("posts.prev")}
           </Button>
-          <Typography sx={{ alignSelf: "center" }}>Page {page}</Typography>
+          <Typography>{t("posts.page", { page })}</Typography>
           <Button disabled={!hasMore} onClick={handleNextPage}>
-            Next
+            {t("posts.next")}
           </Button>
         </Box>
       )}

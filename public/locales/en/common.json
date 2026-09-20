@@ -1,4 +1,41 @@
 {
-  "header": "",
-  "footer": ""
+  "app": {
+    "title": "Posts App"
+  },
+  "nav": {
+    "posts": "Posts",
+    "users": "Friends",
+    "addPost": "Add Post",
+    "myPosts": "My Posts"
+  },
+  "posts": {
+    "searchPlaceholder": "Search posts",
+    "loading": "Loading posts...",
+    "noResults": "No posts found",
+    "views": "Views: {{count}}",
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page {{page}}"
+  },
+  "postDetail": {
+    "commentsTitle": "Comments",
+    "notFound": "Post not found — go back to the list.",
+    "byAuthor": "By {{name}}"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Sign up",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "emailLabel": "Email Address",
+    "signInButton": "Sign In",
+    "signUpButton": "Sign Up",
+    "noAccount": "Don't have an account? Sign Up",
+    "haveAccount": "Already have an account? Sign in"
+  },
+  "users": {
+    "viewPosts": "View Posts"
+  }
 }

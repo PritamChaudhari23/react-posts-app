@@ -5,16 +5,18 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Container from "@mui/material/Container";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../auth/AuthProvider";
 
 export default function SignIn() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,7 +46,7 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            {t("auth.signInTitle")}
           </Typography>
           <Box
             component="form"
@@ -57,7 +59,7 @@ export default function SignIn() {
               required
               fullWidth
               id="username"
-              label="Username"
+              label={t("auth.usernameLabel")}
               name="username"
               autoComplete="username"
               autoFocus
@@ -67,7 +69,7 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label={t("auth.passwordLabel")}
               type="password"
               id="password"
               autoComplete="current-password"
@@ -78,10 +80,10 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {t("auth.signInButton")}
             </Button>
             <Link href="/signup" variant="body2">
-              Don't have an account? Sign Up
+              {t("auth.noAccount")}
             </Link>
           </Box>
         </Paper>

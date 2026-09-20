@@ -5,17 +5,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Container from "@mui/material/Container";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { signup } from "../../store/slices/authSlice";
 
 export default function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,7 +52,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            {t("auth.signUpTitle")}
           </Typography>
           <Box
             component="form"
@@ -63,7 +65,7 @@ export default function SignUp() {
               required
               fullWidth
               id="firstName"
-              label="First Name"
+              label={t("auth.firstNameLabel")}
               name="firstName"
               autoFocus
             />
@@ -72,7 +74,7 @@ export default function SignUp() {
               required
               fullWidth
               id="lastName"
-              label="Last Name"
+              label={t("auth.lastNameLabel")}
               name="lastName"
             />
             <TextField
@@ -80,7 +82,7 @@ export default function SignUp() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={t("auth.emailLabel")}
               name="email"
               autoComplete="email"
             />
@@ -89,7 +91,7 @@ export default function SignUp() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label={t("auth.passwordLabel")}
               type="password"
               id="password"
               autoComplete="new-password"
@@ -100,10 +102,10 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              {t("auth.signUpButton")}
             </Button>
             <Link href="/signin" variant="body2">
-              Already have an account? Sign in
+              {t("auth.haveAccount")}
             </Link>
           </Box>
         </Paper>

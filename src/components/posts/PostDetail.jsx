@@ -1,20 +1,20 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Comment from "../comments/Comment";
 import Page from "../app/page/Page";
 import Post from "./Post";
+import Comment from "../comments/Comment";
 import { setCurrentPostId } from "../../store/slices/postsSlice";
 
 const PostDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const post = useSelector((state) =>
     state.posts.posts.list.find((p) => p.id === Number(id)),
@@ -36,36 +36,38 @@ const PostDetail = () => {
 
   if (!post) {
     return (
-      <Page title="Post">
-        <Typography align="center">
-          Post not found — go back to the list.
-        </Typography>
+      <Page>
+        <Typography align="center">{t("postDetail.notFound")}</Typography>
       </Page>
     );
   }
 
   return (
-    <Page title="Post">
+    <Page>
       <Post post={post} clickable={false} />
 
       {author && (
         <Box sx={{ maxWidth: 800, margin: "auto", mt: 2 }}>
           <Typography variant="subtitle1">
-            By {author.firstName} {author.lastName}
+            {t("postDetail.byAuthor", {
+              name: `${author.firstName} ${author.lastName}`,
+            })}
           </Typography>
         </Box>
       )}
 
       <Box sx={{ maxWidth: 800, margin: "auto", mt: 3 }}>
         <Typography variant="h6" sx={{ mb: 1 }}>
-          Comments
+          {t("postDetail.commentsTitle")}
         </Typography>
         {commentsLoading ? (
           <CircularProgress size={24} />
         ) : (
-          comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
-          ))
+          <List>
+            {comments.map((comment) => (
+              <Comment key={comment.id} comment={comment} />
+            ))}
+          </List>
         )}
       </Box>
     </Page>

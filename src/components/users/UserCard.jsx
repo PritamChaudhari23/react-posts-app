@@ -1,8 +1,10 @@
 import { Card, CardContent, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const UserCard = ({ user }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleViewPosts = () => {
     navigate(`/users/${user.id}/posts`);
@@ -36,7 +38,7 @@ const UserCard = ({ user }) => {
           onClick={handleViewPosts}
           sx={{ mt: 2 }}
         >
-          View Posts
+          {t("users.viewPosts")}
         </Button>
       </CardContent>
     </Card>
