@@ -6,8 +6,16 @@ import {
   searchPosts,
   searchPostsSuccess,
   searchPostsFailure,
+  fetchUserPosts,
+  fetchUserPostsSuccess,
+  fetchUserPostsFailure,
 } from "../slices/postsSlice";
-import { getPosts, searchPosts as searchPostsApi } from "../network";
+
+import {
+  getPosts,
+  searchPosts as searchPostsApi,
+  getUserPosts,
+} from "../network";
 
 const selectPagination = (state) => state.posts.posts;
 
@@ -24,12 +32,8 @@ function* fetchPostsWorker() {
 
 function* searchPostsWorker(action) {
   const query = action.payload;
-
   yield delay(400);
-
-  if (!query.trim()) {
-    return;
-  }
+  if (!query.trim()) return;
 
   try {
     const posts = yield call(searchPostsApi, query);
@@ -39,7 +43,18 @@ function* searchPostsWorker(action) {
   }
 }
 
+function* fetchUserPostsWorker(action) {
+  const userId = action.payload;
+  try {
+    const posts = yield call(getUserPosts, userId);
+    yield put(fetchUserPostsSuccess(posts));
+  } catch (error) {
+    yield put(fetchUserPostsFailure(error.message));
+  }
+}
+
 export default function* postsSaga() {
   yield takeLatest(fetchPosts.type, fetchPostsWorker);
   yield takeLatest(searchPosts.type, searchPostsWorker);
+  yield takeLatest(fetchUserPosts.type, fetchUserPostsWorker);
 }

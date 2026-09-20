@@ -21,6 +21,12 @@ const initialPostsState = {
   },
 
   likedPostIds: [],
+
+  userPosts: {
+    list: [],
+    loading: false,
+    error: null,
+  },
 };
 
 const postsSlice = createSlice({
@@ -82,6 +88,18 @@ const postsSlice = createSlice({
         (id) => id !== action.payload,
       );
     },
+    fetchUserPosts: (state) => {
+      state.userPosts.loading = true;
+      state.userPosts.error = null;
+    },
+    fetchUserPostsSuccess: (state, action) => {
+      state.userPosts.loading = false;
+      state.userPosts.list = action.payload;
+    },
+    fetchUserPostsFailure: (state, action) => {
+      state.userPosts.loading = false;
+      state.userPosts.error = action.payload;
+    },
   },
 });
 
@@ -98,6 +116,9 @@ export const {
   likePost,
   likePostOptimistic,
   likePostRollback,
+  fetchUserPosts,
+  fetchUserPostsSuccess,
+  fetchUserPostsFailure,
 } = postsSlice.actions;
 
 export { postsSlice };

@@ -7,7 +7,8 @@ const Navbar = () => {
 
   return (
     <nav id="app-navbar" className="app-navbar">
-      <Link to="/posts">{t("nav.posts")}</Link> |
+      <Link to="/addpost">{t("nav.addPost")}</Link> |
+      <Link to="/myposts">{t("nav.myPosts")}</Link> |
       <Link to="/users">{t("nav.users")}</Link>
     </nav>
   );
