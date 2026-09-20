@@ -1,4 +1,4 @@
-import "../appPage.scss";
+import "../page.scss";
 
 const Page = ({ children, className, ...props }) => (
   <main id="app-body" className={`app-body ${className || ""}`} {...props}>

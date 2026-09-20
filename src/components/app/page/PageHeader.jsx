@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import "../appPage.scss";
+import "../page.scss";
 
 const PageHeader = ({ title, description, children, className, ...props }) => (
   <section className={`page-header ${className || ""}`} {...props}>

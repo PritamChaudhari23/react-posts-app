@@ -1,4 +1,4 @@
-import "../appPage.scss";
+import "../page.scss";
 
 const PageBody = ({ children, className, ...props }) => (
   <section className={`page-body ${className || ""}`} {...props}>
