@@ -2,7 +2,8 @@ import { useAuth } from "./components/auth/AuthProvider";
 import { Navigate } from "react-router-dom";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/app/NotFound";
-import Post from "./components/posts/Post";
+import PostsList from "./components/posts/PostList";
+import PostDetail from "./components/posts/PostDetail";
 import Comment from "./components/comments/Comment";
 import UsersList from "./components/users/UsersList";
 import SignIn from "./components/users/SignIn";
@@ -15,8 +16,8 @@ const HomeRedirect = () => {
 
 const routes = [
   { path: "/", element: <HomeRedirect /> },
-  { path: "/posts", element: <ProtectedRoute element={<Post />} /> },
-  { path: "/posts/:id", element: <ProtectedRoute element={<Post />} /> },
+  { path: "/posts", element: <ProtectedRoute element={<PostsList />} /> },
+  { path: "/posts/:id", element: <ProtectedRoute element={<PostDetail />} /> },
   { path: "/users", element: <ProtectedRoute element={<UsersList />} /> },
   { path: "/comments", element: <ProtectedRoute element={<Comment />} /> },
   { path: "/signin", element: <SignIn /> },

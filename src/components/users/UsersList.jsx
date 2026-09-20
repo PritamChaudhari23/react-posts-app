@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Page from "../app/page/Page";
 import { useDispatch, useSelector } from "react-redux";
-import { usersSlice } from "../../store/slices/usersSlice";
+import { fetchUsers } from "../../store/slices/usersSlice";
 import UserCard from "./UserCard";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Grid } from "@mui/material";
 
 const UsersList = () => {
   const users = useSelector((state) => Object.values(state.users.users.byId));
@@ -11,26 +11,26 @@ const UsersList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(usersSlice.actions.fetchUsers());
+    dispatch(fetchUsers());
   }, [dispatch]);
+
+  if (loading) {
+    return (
+      <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Page>
-      {loading ? (
-        <Box sx={{ display: "flex", justifyContent: "center", p: 4 }}>
-          <CircularProgress />
-        </Box>
-      ) : (
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: 2,
-          }}
-        >
-          {users && users.map((user) => <UserCard key={user.id} user={user} />)}
-        </Box>
-      )}
+      <Grid container spacing={2}>
+        {users.map((user) => (
+          <Grid item xs={12} sm={6} md={4} key={user.id}>
+            <UserCard user={user} />
+          </Grid>
+        ))}
+      </Grid>
     </Page>
   );
 };
