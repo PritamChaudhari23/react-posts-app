@@ -6,6 +6,7 @@ import { postsSlice } from "./slices/postsSlice";
 import { commentsSlice } from "./slices/commentsSlice";
 import { usersSlice } from "./slices/usersSlice";
 import { appSlice } from "./slices/appSlice";
+import { authSlice } from "./slices/authSlice";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ export const store = configureStore({
     comments: commentsSlice.reducer,
     users: usersSlice.reducer,
     app: appSlice.reducer,
+    auth: authSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),

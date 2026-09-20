@@ -65,6 +65,16 @@ const getUserPosts = async (userId) => {
 
 const getUserById = (userId) => axiosInstance.get(`/users/${userId}`);
 
+const login = async (username, password) => {
+  const data = await axiosInstance.post("/auth/login", { username, password });
+  return data;
+};
+
+const addUser = async (userData) => {
+  const data = await axiosInstance.post("/users/add", userData);
+  return data;
+};
+
 export {
   getPosts,
   searchPosts,
@@ -76,4 +86,6 @@ export {
   getUsers,
   getUserPosts,
   getUserById,
+  login,
+  addUser,
 };
